@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private static final int TAKE_PHOTO_REQUEST_TWO = 444;
 
-    public static String BASE_URL = "http://192.168.1.100/AndroidUploadImage/upload.php";
+    public static String BASE_URL = "http://159.226.21.115/caption/index.php";
     static final int PICK_IMAGE_REQUEST = 1;
     String filePath;
     Uri imageUri;
@@ -166,11 +166,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     Log.d("Response", response);
+                    resultTV.setText(response);
                     try {
                         JSONObject jObj = new JSONObject(response);
                         String message = jObj.getString("message");
 
-                        resultTV.setText(response);
+
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         // JSON error
